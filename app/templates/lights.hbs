@@ -23,7 +23,7 @@
       {{#each itemController='light'}}
         <li>
           <a href="#" {{action 'toggle' this}} {{bind-attr class="isOn:on"}} >
-            {{room}}
+            {{room.name}}
           </a>
         </li>
       {{/each}}
