@@ -2596,19 +2596,19 @@ div.actions {
   text-align: center; }
 
 .lighting-list li {
-  padding: 0;
+  padding: 20px;
   margin: 0; }
 .lighting-list a {
-  width: 100%;
+  /*width: 100%;*/
   padding: 20px;
   text-align: center;
   text-decoration: none;
-  display: block;
+  /*display: block;*/
   color: black; }
-.lighting-list a:hover {
+/*.lighting-list li:hover {
   color: #d0e01b;
-  background-color: #333333; }
-.lighting-list a.on {
+  background-color: #333333; }*/
+.lighting-list li.on {
   background-color: #d0e01b;
   color: #333333; }
 

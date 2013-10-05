@@ -15,18 +15,18 @@ div.actions {
     margin: 0;
   }
   a {
-    width: 100%;
-    padding: 20px;
+    // width: 100%;
+    // padding: 20px;
     text-align: center;
     text-decoration: none;
-    display: block;
+    // display: block;
     color: black;
   }
 
-  a:hover {
-    color: $yellow;
-    background-color: $gray;
-  }
+  // li:hover {
+  //   color: $yellow;
+  //   background-color: $gray;
+  // }
 
   a.on {
     background-color: $yellow;

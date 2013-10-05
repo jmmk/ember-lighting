@@ -1,6 +1,6 @@
 var IndexRoute = Ember.Route.extend({
   redirect: function() {
-    this.transitionTo('lights');
+    this.transitionTo('rooms');
   }
 });
 
