@@ -37,14 +37,17 @@ define("appkit/controllers/room",
   function() {
     "use strict";
     var RoomController = Ember.ObjectController.extend({
-      numberOfLights: function() {
-        return this.get('lights.length');
-      }.property('lights.length'),
-
-      lightsOn: function() {
+      numberOfLightsObserver: function() {
         var lights = this.get('lights');
-        return lights.filterBy('isOn', true).get('length');
-      }.property('lights.@each.isOn')
+        var numberOfLights = lights.get('length');
+        this.set('numberOfLights', numberOfLights);
+      }.observes('lights.length'),
+
+      lightsOnObserver: function() {
+        var lights = this.get('lights');
+        var lightsOn = lights.filterBy('isOn', true).get('length');
+        this.set('lightsOn', lightsOn);
+      }.observes('lights.@each.isOn')
     });
 
 
@@ -57,21 +60,21 @@ define("appkit/controllers/rooms",
     var RoomsController = Ember.ArrayController.extend({
       itemController: 'room',
 
-      totalLights: function() {
+      totalLightsObserver: function() {
         var count = 0;
         this.forEach(function(room) {
           count += room.get('numberOfLights');
         })
-        return count;
-      }.property('@each.numberOfLights'),
+        this.set('totalLights', count);
+      }.observes('@each.numberOfLights'),
 
-      totalLightsOn: function() {
+      totalLightsOnObserver: function() {
         var count = 0;
         this.forEach(function(room) {
           count += room.get('lightsOn');
         })
-        return count;
-      }.property('@each.lightsOn'),
+        this.set('totalLightsOn', count);
+      }.observes('@each.lightsOn'),
 
       totalLightsOff: function() {
         return this.get('totalLights') - this.get('totalLightsOn');
@@ -86,6 +89,30 @@ define("appkit/controllers/section",
   function() {
     "use strict";
     var SectionController = Ember.ObjectController.extend({
+      allOnObserver: function() {
+        var rooms = this.get('rooms');
+        var allOn = true;
+        rooms.forEach(function(room) {
+          if(room.get('numberOfLights') !== room.get('lightsOn')) {
+            allOn = false;
+            return;
+          }
+        })
+        this.set('allOn', allOn);
+      }.observes('rooms.@each.numberOfLights', 'rooms.@each.lightsOn'),
+
+      allOffObserver: function() {
+        var rooms = this.get('rooms');
+        var allOff = true;
+        rooms.forEach(function(room) {
+          if(room.get('lightsOn') > 0) {
+            allOff = false;
+            return;
+          }
+        })
+        this.set('allOff', allOff);
+      }.observes('rooms.@each.numberOfLights', 'rooms.@each.lightsOn'),
+
       actions: {
         turnOn: function(rooms) {
           rooms.content.forEach(function(room) {
