@@ -16,18 +16,12 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 define('appkit/templates/controls', [], function(){ return Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashContexts, hashTypes, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, hashContexts, hashTypes, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes, options;
+  var buffer = '', hashTypes, hashContexts;
   data.buffer.push("\n  <button ");
-  hashContexts = {'disabled': depth0};
-  hashTypes = {'disabled': "STRING"};
-  options = {hash:{
-    'disabled': ("allOn")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "turnOn", "rooms", {hash:{},contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -36,12 +30,6 @@ function program1(depth0,data) {
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "name", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(" On</button>\n  <button ");
-  hashContexts = {'disabled': depth0};
-  hashTypes = {'disabled': "STRING"};
-  options = {hash:{
-    'disabled': ("allOff")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "turnOff", "rooms", {hash:{},contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
