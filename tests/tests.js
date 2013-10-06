@@ -1,60 +1,3 @@
-define("appkit/tests/acceptance/component_test",
-  [],
-  function() {
-    "use strict";
-    var App;
-
-    module("Acceptances - Component", {
-      setup: function(){
-        App = startApp();
-      },
-      teardown: function() {
-        Ember.run(App, 'destroy');
-      }
-    });
-
-    test("component output is rendered", function(){
-      expect(3);
-
-      visit('/component-test').then(function(){
-        ok(exists("h2:contains('Welcome to Ember.js')"));
-
-        var list = find(".pretty-color");
-        equal(list.length, 3);
-        equal(list.first().text(), "Pretty Color: purple\n");
-      });
-    });
-
-
-  });
-define("appkit/tests/acceptance/index_test",
-  [],
-  function() {
-    "use strict";
-    var App;
-
-    module("Acceptances - Index", {
-      setup: function(){
-        App = startApp();
-      },
-      teardown: function() {
-        Ember.run(App, 'destroy');
-      }
-    });
-
-    test("index renders", function(){
-      expect(3);
-
-      visit('/').then(function(){
-        ok(exists("h2:contains('Welcome to Ember.js')"));
-
-        var list = find("ul li");
-        equal(list.length, 3);
-        equal(list.text(), "redyellowblue");
-      });
-    });
-
-  });
 define("appkit/tests/helpers/isolated_container",
   ["resolver"],
   function(Resolver) {
@@ -107,31 +50,5 @@ define("appkit/tests/helpers/start_app",
 
 
     return startApp;
-  });
-define("appkit/tests/unit/routes/index_test",
-  ["appkit/routes/index"],
-  function(Index) {
-    "use strict";
-
-    var route;
-    module("Unit - IndexRoute", {
-      setup: function(){
-        var container = isolatedContainer([
-          'route:index'
-        ]);
-
-        route = container.lookup('route:index');
-      }
-    });
-
-    test("it exists", function(){
-      ok(route);
-      ok(route instanceof Ember.Route);
-    });
-
-    test("#model", function(){
-      deepEqual(route.model(), ['red', 'yellow', 'blue']);
-    });
-
   });
 //@ sourceMappingURL=tests.js.map
