@@ -1,0 +1,40 @@
+$use-matrix: true;
+
+@import "inuit/inuit";
+
+$yellow: #D0E01B;
+$gray: #333;
+
+div.actions {
+  text-align: center;
+}
+
+.lighting-list {
+  li {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    // width: 100%;
+    // padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    // display: block;
+    color: black;
+  }
+
+  // li:hover {
+  //   color: $yellow;
+  //   background-color: $gray;
+  // }
+
+  a.on {
+    background-color: $yellow;
+    color: $gray;
+  }
+}
+
+ul.summary li {
+  text-align: center;
+  list-style: inside;
+}
