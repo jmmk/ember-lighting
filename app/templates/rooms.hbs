@@ -1,0 +1,26 @@
+<ul class="matrix three-cols lighting-list">
+  {{#each}}
+    {{#each lights}}
+      <li {{bind-attr class='isOn:on'}}>
+        <label {{bind-attr class='isOn:on'}}>
+          {{input type='checkbox' checked=isOn}}
+          {{room.name}}
+        </label>
+      </li>
+    {{/each}}
+  {{/each}}
+</ul>
+
+<div class='actions'>
+  {{render 'controls' sections}}
+</div>
+</br>
+
+<ul class="summary">
+  <li id="lights-on-total">
+    <strong>{{totalLightsOn}}</strong> lights are on
+  </li>
+  <li id="lights-off-total">
+    <strong>{{totalLightsOff}}</strong> lights are off
+  </li>
+</ul>
