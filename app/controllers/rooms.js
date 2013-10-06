@@ -1,21 +1,21 @@
 var RoomsController = Ember.ArrayController.extend({
   itemController: 'room',
 
-  totalLights: function() {
+  totalLightsObserver: function() {
     var count = 0;
     this.forEach(function(room) {
       count += room.get('numberOfLights');
     })
-    return count;
-  }.property('@each.numberOfLights'),
+    this.set('totalLights', count);
+  }.observes('@each.numberOfLights'),
 
-  totalLightsOn: function() {
+  totalLightsOnObserver: function() {
     var count = 0;
     this.forEach(function(room) {
       count += room.get('lightsOn');
     })
-    return count;
-  }.property('@each.lightsOn'),
+    this.set('totalLightsOn', count);
+  }.observes('@each.lightsOn'),
 
   totalLightsOff: function() {
     return this.get('totalLights') - this.get('totalLightsOn');

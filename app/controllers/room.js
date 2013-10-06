@@ -1,12 +1,15 @@
 var RoomController = Ember.ObjectController.extend({
-  numberOfLights: function() {
-    return this.get('lights.length');
-  }.property('lights.length'),
-
-  lightsOn: function() {
+  numberOfLightsObserver: function() {
     var lights = this.get('lights');
-    return lights.filterBy('isOn', true).get('length');
-  }.property('lights.@each.isOn')
+    var numberOfLights = lights.get('length');
+    this.set('numberOfLights', numberOfLights);
+  }.observes('lights.length'),
+
+  lightsOnObserver: function() {
+    var lights = this.get('lights');
+    var lightsOn = lights.filterBy('isOn', true).get('length');
+    this.set('lightsOn', lightsOn);
+  }.observes('lights.@each.isOn')
 });
 
 export default RoomController;

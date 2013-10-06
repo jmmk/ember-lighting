@@ -1,5 +1,5 @@
 {{#each itemController='section'}}
-  <button {{action 'turnOn' rooms}}>{{name}} On</button>
-  <button {{action 'turnOff' rooms}}>{{name}} Off</button>
+  <button {{bind-attr disabled='allOn'}}{{action 'turnOn' rooms}}>{{name}} On</button>
+  <button {{bind-attr disabled='allOff'}}{{action 'turnOff' rooms}}>{{name}} Off</button>
   </br>
 {{/each}}
